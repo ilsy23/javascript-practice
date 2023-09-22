@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+        //백틱(``)을 사용하여 문자열 삽입
+        var a = 1;
+        var b = 10;
+        console.log(`1 * 10 is ${a * b}`);
+
+        //여러줄 문자열 생성 > 줄 개행하면 자동으로 개행
+        var text = `hello,
+        my name is Banana.
+        How are you?`
+
+        //중첩 템플릿 (템플릿 안에 템플릿) 가능
+        const people = [
+            {   name: 'A',
+                age: 27
+            },{
+                name: 'B',
+                age: 27
+            },{
+                name: 'C',
+                age: 31
+            }
+        ];
+
+        const markup = `
+        <ul>
+        ${people.map(person => `<li> ${person.name}</li>`).join('\n')}
+        </ul>
+        `;
+        document.write(markup);
+
+        //삼항 연산자 활용 가능
+        const artist = {
+            name: "Bon Jovi",
+            age: 56,
+            song: "'Always'"
+        };
+        const introduction = `
+            <div>
+                <p>
+                    ${artist.name} is ${artist.age} years old${artist.song ? ` and wrote the song ${artist.song}` : '.'}
+                </p>
+            </div>
+        `;
+        document.write(introduction); //삼항 연산 결과에 따라 다른 문자열 출력
+
+        //리터럴 내 함수 사용 가능
+        const groceries = {
+            fruit: "Orange",
+            meat: "Pork",
+            others: ['milk', 'tuna', 'icecream']
+        };
+        function otherList(others){
+            return others.map(other => `<p>${other}</p>`).join('\n');
+        };
+        const groceryList = `
+        <div>
+        <p>${groceries.fruit}</p>
+        <p>${groceries.meat}</p>
+        <p>${otherList(groceries.others)}</p>
+        </div>
+        `;
+        document.write(groceryList);
+
+        //함수 태그
+        //리터럴 앞에 함수 이름을 적으면 리터럴 안의 모든 항목이 함수의 인수로 전달된다.
+        let name = "Tom";
+        let age = 23;
+        function print(strings, name, age){
+            let str = strings[1]; 
+            let compAge;
+            age>22?compAge='older':compAge='younger';
+            return name + str + compAge + ' than Susan' ;
+        }
+        let sentence = print`${name} is ${age} years old.`
+        
+        document.write(sentence);
+    </script>
+</body>
+</html>
