@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 3-9
+        function isArmstrongNum(num) {
+            let sum = 0;
+            let temp = num;
+            while(temp>0){
+                remainder = temp % 10;
+                sum += remainder**3;
+                temp = parseInt(temp/10);
+            };
+            if(sum != num) return false;
+            return true;
+        };
+
+        let num = 153;
+        if(!isArmstrongNum(num)) document.write(`${num}(는) 암스트롱 수가 아닙니다.`);
+        else document.write(`${num}(는) 암스트롱 수입니다.`);
+
+        document.write('<br><br>');
+
+        // 3-10
+        for(let i=100; i<1000; i++){
+            if(isArmstrongNum(i))  document.write(i + ' ');
+        };
+
+        document.write('<br><br>');
+
+        // 3-11
+        function isPrimeNum(num){
+            if(num<=1) return false;
+            let count = 0;
+            for(let i=1; i<=num; i++){
+                if(num%i==0) count++;
+            };
+            if(count==2) return true;
+            else return false;
+        };
+        num = 37;
+        if(isPrimeNum(num)) document.write(`${num}은(는) 소수이다.`);
+        else document.write(`${num}은(는) 소수가 아니다.`);
+
+        document.write('<br><br>');
+
+        // 3-12
+        for(let i=1; i<=100; i++){
+            if(isPrimeNum(i)) document.write(i + ' ');
+        };
+        document.write('<br><br>');
+
+        // 3-13
+        function sameLastDigit(num1, num2){
+            let text = `숫자 1: ${num1}<br>숫자 2: ${num2}<br>`;
+            num1 = num1%10;
+            num2 = num2%10;
+            if(num1 == num2) text += '두 숫자이 끝 자리 값이 서로 같다.<br>';
+            else text += '두 숫자이 끝 자리 값이 서로 다르다.<br>';
+            return text;
+        };
+
+        document.write(sameLastDigit(35, 2245));
+        document.write(sameLastDigit(235, 67));
+
+        document.write('<br><br>');
+
+        // 3-14
+        for(let i=1; i<=8; i++){
+            for(let j=1; j<=i; j++){
+                document.write('*');
+            };
+            document.write('<br>');
+        };
+
+        // 3-15
+        for(let i=8; i>=1; i--){
+            for(let j=1; j<=i; j++){
+                document.write('*');
+            };
+            document.write('<br>');
+        };
+
+    </script>
+</body>
+</html>

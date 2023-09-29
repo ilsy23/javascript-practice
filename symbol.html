@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        // symbol
+
+            // 원시 자료형
+            // 항상 고유한 값을 가진다.
+
+            Symbol();               // 함수로 생성 -> 변경 불가능한 원시 타입의 값
+            Symbol('description');    // description은 심볼에 붙이는 단순한 설명으로 값에 영향을 주지 않는다.
+            
+            Symbol('foo') == Symbol('foo');  // false
+            Symbol('foo') === Symbol('foo'); // false
+            
+            // const mySymbol = new Symbol(); (x) new 연산자를 이용해 생성하면 TypeError 발생
+
+
+            // Symbol.for(key)
+            // 주어진 key를 가진 기존 심볼을 찾아 반환
+            // 기존 심볼이 없으면 새로운 심볼을 생성하고, key를 사용해 전역 심볼 레지스트리에 등록
+            
+            const symA = Symbol.for('Apple');   // key가 Apple인 새로운 심볼 생성
+            const symB = Symbol.for('Apple');   // 키가 'Apple'인 기존 심볼을 반환
+            symA === symB;                      // true
+
+            // Symbol.keyFor(symbol)
+            // 전역 심볼 레지스트리에서 주어진 symbol의 키를 반환
+
+            console.log(Symbol.keyFor(symA));   // Apple
+
+
+
+            // 객체의 프로퍼티 키로 사용
+            // [Symbol()]
+
+            const office = {
+                Jane: 'CEO',
+                [Symbol('Tom')]: 'CTO', // 각각 다른 키로 인식
+                [Symbol('Tom')]: 'CIO', // 고유한 프로퍼티 키를 만들 수 있다.
+            };                          
+            
+            // 프로퍼티 은닉
+            // symbol을 프로퍼티 키로 사용하면
+            // for...in, Object.keys(), Object.getOwnPropertyNames()에서 제외됨
+            // 외부에 노출할 필요 없는 프로퍼티를 은닉할 수 있다.
+
+            for(person in office) {     
+                console.log(person, office[person]);    // Jane CEO
+            }                                           
+
+            console.log(Object.keys(office));                   // ['Jane']
+            console.log(Object.getOwnPropertyNames(office));    // ['Jane']
+
+            // Object.getOwnPropertySymbols()로 symbol 프로퍼티 키로 생성한 프로퍼티를 찾을 수 있다.
+            console.log(Object.getOwnPropertySymbols(office));  // [Symbol(Tom), Symbol(Tom)]
+
+            console.log(Reflect.ownKeys(office));   // symbol을 포함한 모든 프로퍼티 키 반환
+
+            const keys = Reflect.ownKeys(office);
+            const value = keys.map(key => office[key]); 
+            console.log(value);                         // ['CEO', 'CTO', 'CIO']
+
+            // enum으로 활용 가능
+            // 각각의 프로퍼티가 고유의 값을 가지기 때문에
+            // 새로운 프로퍼티를 추가할 때 값이 중복될 가능성이 없다.
+
+            const Direction = Object.freeze({
+                UP: Symbol('up'),
+                DOWN: Symbol('down'),
+                LEFT: Symbol('left'),
+                RIGHT: Symbol('right'),
+            });
+
+
+    </script>
+
+</body>
+</html>

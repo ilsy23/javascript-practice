@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="mileToKm" border="1"></table>
+
+    <script>
+
+        // 3-1
+        function findMaxNum(num1, num2, num3) {
+            let max;
+
+            num1 >= num2 ? max = num1 : max = num2;
+            max >= num3 ? max : max = num3;
+
+            return `세 수중 가장 큰 수: ${max}`;
+        }; 
+
+        document.write(findMaxNum(5, -3, 11));
+        document.write('<br><br>');
+
+        // 3-2
+        for(let i=100; i<=300; i++){
+            if(i%3==0) document.write(i + ' ');
+        };
+        document.write('<br><br>');
+
+        // 3-3
+        let i = 200;
+        while(i<=500){
+            if(i%5==0) document.write(i + ' ');
+            i++;
+        };
+        document.write('<br><br>');
+
+        // 3-4
+        let count = 0;
+        for(let i=100; i<=300; i++){
+            if(i%3!=0) continue;
+            document.write(i + ' ');
+            count++;
+            if(count%5==0) document.write('<br>');
+        };
+
+        document.write('<br><br>');
+
+        // 3-5
+        let num = 5;
+        let factorial = 1;
+
+        function calcFactorial(num){
+            if(num<0) return '음수는 팩토리얼을 구할 수 없습니다.';
+            if(Math.floor(num) != num) return '정수를 입력해주세요';
+            if(num==0) return 1;
+            for(let i=5; i>0; i--){
+            factorial *= i;
+            };
+            return `${num}의 팩토리얼: ${factorial}`;
+        };
+
+        document.write(calcFactorial(num));
+        document.write('<br><br>');
+
+        // 3-6
+        document.write('-------------------------------<br>');
+        document.write('마일 킬로미터<br>');
+        document.write('-------------------------------<br>');
+        for(let mile=1; mile<=100; mile+=2){
+            let km = (mile * 1.609344).toFixed(2);
+            document.write(`&emsp;${mile}&emsp;&emsp;${km}<br>`);
+        };
+        document.write('-------------------------------');
+        document.write('<br><br>');
+
+        // 3-7
+        document.write('-------------------------------<br>');
+        document.write('마일 킬로미터<br>');
+        document.write('-------------------------------<br>');
+        let mile = 1;
+        while(mile<=100){
+            let km = (mile * 1.609344).toFixed(2);
+            document.write(`&emsp;${mile}&emsp;&emsp;${km}<br>`);
+            mile += 2;
+        };
+        document.write('-------------------------------');
+        document.write('<br><br>');
+
+        // 3-8
+
+        let html = '';
+        
+        html += `
+                <tr>
+                    <th>마일</th>
+                    <th>킬로미터</th>
+                </tr>
+        `;
+        mile = 1;
+        while(mile<=100){
+            let km = (mile * 1.609344).toFixed(2);
+            html += `
+                <tr>
+                    <td>${mile}</td>
+                    <td>${km}</td>
+                </tr>
+            `;
+            mile += 2;
+        };
+
+        document.getElementById('mileToKm').innerHTML = html;
+
+
+    </script>
+</body>
+</html>

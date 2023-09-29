@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <span></span>
+
+    <script>
+
+        // 2-5
+
+        let kg = 60;
+        let lb = kg * 2.2;
+
+        document.write(`${kg} 킬로그램은 ${lb} 파운드입니다.<br>`);
+        document.write('---------------------------------------------<br>')
+
+        // 2-6
+
+        let m2 = 99;
+        let pyeong = m2 * 0.3;
+
+        document.write(`${m2} m2는 ${pyeong} 평입니다.<br>`);
+        document.write('---------------------------------------------<br>')
+
+        // 2-7
+
+        let upper = 10;
+        let lower = 14;
+        let height = 4;
+
+        let area = (upper + lower) / 2 * height;
+
+        document.write(`
+            윗변 길이 : ${upper}<br>
+            밑변길이 : ${lower}<br>
+            높이 : ${height}<br>
+            - 사다리꼴의 넓이 : ${area}<br>
+        `);
+        document.write('---------------------------------------------<br>')
+
+        // 2-8
+
+        let timeDeposit = 12e6;
+        let rate = 4;
+        let interest = timeDeposit * rate * 0.01 / 12;
+
+        document.write(`
+            정기예금액 : ${timeDeposit}원<br>
+            이율 : ${rate}%<br>
+            - 월 이자 : ${interest}원
+        `);
+
+
+    </script>
+</body>
+</html>

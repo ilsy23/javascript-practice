@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+    <p></p>
 
     <script>
         //백틱(``)을 사용하여 문자열 삽입
@@ -16,9 +16,12 @@
         console.log(`1 * 10 is ${a * b}`);
 
         //여러줄 문자열 생성 > 줄 개행하면 자동으로 개행
-        var text = `hello,
-        my name is Banana.
-        How are you?`
+        var text = `
+            hello,
+            my name is Banana.
+            How are you?`;
+
+        document.querySelector('p').innerText = text;
 
         //중첩 템플릿 (템플릿 안에 템플릿) 가능
         const people = [

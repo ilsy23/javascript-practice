@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>구구단 표</h3>
+    <p id="show"></p>
+
+
+
+    <script>
+
+        let dan;
+        let hang;
+        let multiTable = ''; 
+
+        multiTable += '<table border="1">';
+   
+        for(hang=1; hang<=9; hang++) {
+            multiTable += '<tr>'
+            for(dan=2; dan<=9; dan++){
+                multiTable += `<td>${dan} × ${hang} = ${dan * hang}</td>`;
+            }
+            multiTable += '</tr>'
+        }
+
+        multiTable += '</table>';
+
+        document.getElementById('show').innerHTML = multiTable;
+
+    </script>
+
+</body>
+</html>
