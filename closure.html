@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 클로저(closure)
+
+        // 반환된 내부함수가 자신이 선언됐을 때의 환경(Lexical environment)인 스코프를 기억하여
+        // 자신이 선언됐을 때의 환경(스코프) 밖에서 호출되어도 그 환경(스코프)에 접근할 수 있는 함수
+
+        // 자신이 선언된 외부함수보다 내부함수가 더 오래 유지되는 경우,
+        // 외부 함수 밖에서 내부함수가 호출되더라도 외부함수의 지역 변수에 접근할 수 있다.
+
+        function outerFunc() {
+            var x = 10;
+            var innerFunc = function () { console.log(x); };
+            return innerFunc;
+        }
+
+        /**
+         *  함수 outerFunc를 호출하면 내부 함수 innerFunc가 반환된다.
+         *  그리고 함수 outerFunc의 실행 컨텍스트는 소멸한다.
+         */
+        var inner = outerFunc(); // inner = innerFunc();
+        inner(); // 10 -> outerFunc의 변수인 x에 접근 가능
+
+
+        // 외부 함수: 호출 후 내부함수를 담은 객체 반환 후 소멸 (Private)
+        const counter = (function () {
+            let privateCounter = 0;
+            function changeBy(val) {
+                privateCounter += val;
+            }
+            // 외부함수에 접근할 수 있는 내부함수를 메서드로 가진 객체를 counter에 반환
+            // counter.increment(), counter.decrement(), counter.value()
+            // 형식으로 외부함수에 접근 가능.
+            return {
+                increment() {
+                    changeBy(1);
+                },
+
+                decrement() {
+                    changeBy(-1);
+                },
+
+                value() {
+                    return privateCounter;
+                },
+            };
+        })();
+
+        console.log(counter.value()); // 0.
+
+        counter.increment();
+        counter.increment();
+        console.log(counter.value()); // 2.
+
+        counter.decrement();
+        console.log(counter.value()); // 1.
+
+
+    </script>
+</body>
+
+</html>

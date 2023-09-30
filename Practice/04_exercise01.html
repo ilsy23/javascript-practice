@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 4-1
+        let width = 5;
+        let height = 8;
+        const area = (width, height) => width * height / 2;
+        
+        document.write(`삼각형의 너비: ${width}<br>삼각형의 높이: ${height}<br>- 삼각형의 넓이: ${area(width, height)}`);
+        document.write('<br><br>');
+
+        // 4-2
+        const Circle = {
+            radius: r => `반지름: ${r}<br>`,
+            perimeter: r => `- 원의 둘레: ${(2 * Math.PI * r).toFixed(2)}<br>`,
+            area: r => `- 원의 넓이: ${(Math.PI * r ** 2).toFixed(2)}<br>`,
+        }
+
+        let r = 8;
+        document.write(Circle.radius(r), Circle.perimeter(r), Circle.area(r));
+        document.write('<br><br>');
+
+        // 4-3
+        function sum(n1, n2){
+            let sum = 0;
+            for(let i=n1; i<=n2; i++){
+                sum += i;
+            };
+            return sum;
+        }
+
+        let n1 = 100;
+        let n2 = 200;
+
+        document.write(`시작 수: ${n1}<br>끝 수: ${n2}<br>- 합계: ${sum(n1, n2)}`);
+        document.write('<br><br>');
+
+        // 4-4
+        function dc(price){
+            let rate;
+            if(price < 10000) rate = 0;
+            else if(price < 50000) rate = 5;
+            else if(price < 300000) rate = 7.5;
+            else rate = 10;
+            let amount = price * rate * 0.01;
+            let pay = price - amount;
+
+            return {rate: rate, amount: amount, pay: pay,};
+        }
+
+        let price = 20000;
+        let discount = dc(price);
+
+        document.write(`
+            구매가: ${price}원<br>
+            할인율: ${discount.rate}%<br>
+            할인 금액: ${discount.amount}원<br>
+            - 지불 금액: ${discount.pay}원
+        `);
+        document.write('<br><br>');
+
+
+    </script>
+</body>
+</html>

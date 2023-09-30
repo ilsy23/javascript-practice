@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 4-5
+        function payment(price, dcRate, delivaryFee){
+            return price * (1 - dcRate*0.01) + delivaryFee;
+        }
+        let price = 25000;
+        let dcRate = 10;
+        let delivaryFee = 5000;
+
+        document.write(`
+            책 값: ${price}원<br>
+            할인율: ${dcRate}%<br>
+            배송료: ${delivaryFee}원<br>
+            - 결제 금액: ${payment(price, dcRate, delivaryFee)}원
+        `);
+        document.write('<br><br>');
+
+        // 4-6
+        function aliquotOf(num){
+            for(let i=1; i<=num; i++){
+                if(num % i == 0) document.write(i,'<br>');
+            }
+        }
+        aliquotOf(16);
+        document.write('<br><br>');
+
+        // 4-7
+        function hcfOf(n1, n2){
+            let f1, f2;
+            for(let i=Math.min(n1, n2); i>=1; i--){
+                if(n1 % i == 0) f1 = i;
+                if(n2 % i == 0) f2 = i;
+                if(f1 == f2) return f1;
+            }
+        }
+        let n1 = 30;
+        let n2 = 20;
+        document.write(`${n1}와(과) ${n2}의 최대 공약수: ${hcfOf(n1, n2)}`);
+        document.write('<br><br>');
+
+
+        // 4-8
+        function getAge(year, month, day){
+            if(month > tm) return ty -1 - year;
+            if(month < tm) return ty - year;
+
+            // tm == month
+            if(day > td) return ty -1 - year;
+            return ty - yesr;
+        }
+        let year = 2000;
+        let month = 8;
+        let day = 10;
+
+        let ty = 2023;
+        let tm = 7;
+        let td = 20;
+
+        document.write(`
+            오늘 날짜: ${ty}년 ${tm}월 ${td}일<br>
+            출생 년월일: ${year}년${month}월${day}일<br>
+            - 나이: ${getAge(year, month, day)}
+        `);
+    </script>
+</body>
+</html>
